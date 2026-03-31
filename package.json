@@ -9,7 +9,9 @@
     "test": "turbo test",
     "test:frontend": "pnpm --filter @dewa/frontend test",
     "test:backend": "pnpm --filter agent-backend test",
-    "test:smart-contract": "pnpm --filter dice-casino test"
+    "test:smart-contract": "pnpm --filter dice-casino test",
+    "watch-commit": "node scripts/auto-commit-watch.js",
+    "commit-push": "git add .; git commit -m \"Update: $(date '+%Y-%m-%d %H:%M:%S')\"; git push origin main"
   },
   "devDependencies": {
     "@coral-xyz/anchor": "^0.32.1",
@@ -17,6 +19,7 @@
     "@solana/web3.js": "^1.98.4",
     "@types/node": "^20",
     "chai": "^6.2.2",
+    "chokidar": "^5.0.0",
     "ts-node": "^10.9.2",
     "turbo": "^2.0.0",
     "typescript": "^5.7.3"

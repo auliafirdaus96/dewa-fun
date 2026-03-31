@@ -7,16 +7,31 @@
 
 const { execSync } = require('child_process');
 const path = require('path');
+const fs = require('fs');
 
 console.log('🚀 Starting custom build for Dewa.fun frontend...');
 
 try {
-  // Get the root directory from environment or default
-  const rootDir = process.env.INIT_CWD || process.cwd();
+  // Resolve to monorepo root by finding package.json
+  let currentDir = process.cwd();
+  while (currentDir !== path.parse(currentDir).root) {
+    if (fs.existsSync(path.join(currentDir, 'package.json')) && 
+        fs.existsSync(path.join(currentDir, 'pnpm-workspace.yaml'))) {
+      break;
+    }
+    currentDir = path.dirname(currentDir);
+  }
+  
+  const rootDir = currentDir;
   const frontendDir = path.join(rootDir, 'apps/frontend');
   
   console.log('📁 Root directory:', rootDir);
   console.log('📁 Frontend directory:', frontendDir);
+  console.log('📁 Current working directory:', process.cwd());
+
+  // Change to root directory for pnpm operations
+  process.chdir(rootDir);
+  console.log('📍 Changed working directory to:', process.cwd());
 
   // Step 1: Install dependencies at root level
   console.log('\n📦 Installing dependencies...');

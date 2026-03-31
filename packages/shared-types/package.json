@@ -1,0 +1,17 @@
+{
+  "name": "@dewa/shared-types",
+  "version": "1.0.0",
+  "description": "Shared TypeScript types and Zod schemas for the Dewa Ecosystem",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    }
+  },
+  "private": true,
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}

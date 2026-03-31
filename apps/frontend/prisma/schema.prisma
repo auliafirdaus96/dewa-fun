@@ -1,0 +1,258 @@
+// ─────────────────────────────────────────────
+// dewafun — Prisma Schema
+// ─────────────────────────────────────────────
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── USER ─────────────────────────────────────
+model User {
+  id            String    @id @default(cuid())
+  walletAddress String    @unique
+  email         String?   @unique
+  emailVerified Boolean   @default(false)
+  displayName   String?
+  avatarUrl     String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  sessions         DiceSession[]
+  bets             Bet[]
+  vaults           Vault[]         @relation("CreatorVaults") // Vaults created by this user
+  agentVaults      Vault[]         @relation("AgentVaults") // Vaults where user is Agent
+  referralsSent    Referral[]      @relation("ReferralSender")
+  referralsUsed    Referral[]      @relation("ReferralReceiver")
+  chatMessages     ChatMessage[]
+  notifications    Notification[]
+  
+  // Earnings tracking
+  totalCreatorEarnings   Decimal   @default(0) @db.Decimal(30, 9) // From creating tokens
+  totalAgentEarnings     Decimal   @default(0) @db.Decimal(30, 9) // From Agent platform
+
+  @@index([walletAddress])
+  @@index([email])
+}
+
+// ─── VAULT ────────────────────────────────────
+model Vault {
+  id                  String    @id @default(cuid())
+  mint                String    @unique
+  creatorId           String
+  creator             User      @relation("CreatorVaults", fields: [creatorId], references: [id])
+  
+  // Agent/Platform tracking (Dewi - Level 1)
+  agentId             String?
+  agent               User?     @relation("AgentVaults", fields: [agentId], references: [id])
+  
+  // On-chain addresses for distribution
+  creatorAddress      String    // Creator's wallet (Level 2)
+  agentAddress        String?   // Agent's wallet (Level 1, optional if self-created)
+
+  // Vault config
+  initialDeposit      Decimal   @db.Decimal(30, 9)
+  currentBalance      Decimal   @db.Decimal(30, 9)
+  affiliate           String    // affiliate wallet address
+
+  // Stats
+  totalWagered        Decimal   @default(0) @db.Decimal(30, 9)
+  totalPaidOut        Decimal   @default(0) @db.Decimal(30, 9)
+  totalCreatorFees    Decimal   @default(0) @db.Decimal(30, 9)  // 25% of house edge
+  totalTreasuryFees   Decimal   @default(0) @db.Decimal(30, 9)  // 30% of house edge
+  totalAffiliateFees  Decimal   @default(0) @db.Decimal(30, 9)  // 20% of house edge
+  totalAgentFees      Decimal   @default(0) @db.Decimal(30, 9)  // 25% of house edge (NEW!)
+
+  // State
+  isPaused            Boolean   @default(false)
+  pausedAt            DateTime?
+  onChainTx           String?   // initialize_vault tx signature
+
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  sessions            DiceSession[]
+  bets                Bet[]
+
+  @@index([mint])
+  @@index([creatorId])
+  @@index([isPaused])
+}
+
+// ─── DICE SESSION ─────────────────────────────
+model DiceSession {
+  id             String      @id @default(cuid())
+  userId         String
+  user           User        @relation(fields: [userId], references: [id])
+  vaultId        String
+  vault          Vault       @relation(fields: [vaultId], references: [id])
+  mint           String
+
+  // Provably fair
+  serverSeed     String
+  serverSeedHash String
+  clientSeed     String
+  nonce          Int         @default(0)
+
+  // Mode
+  mode           BetMode
+  status         SessionStatus @default(ACTIVE)
+
+  // Settlement
+  totalWagered   Decimal     @default(0) @db.Decimal(30, 9)
+  totalPayout    Decimal     @default(0) @db.Decimal(30, 9)
+  settleTx       String?
+
+  revealedAt     DateTime?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  bets           Bet[]
+
+  @@index([userId, status])
+  @@index([serverSeedHash])
+}
+
+// ─── BET ──────────────────────────────────────
+model Bet {
+  id              String      @id @default(cuid())
+  userId          String
+  user            User        @relation(fields: [userId], references: [id])
+  sessionId       String
+  session         DiceSession @relation(fields: [sessionId], references: [id])
+  vaultId         String
+  vault           Vault       @relation(fields: [vaultId], references: [id])
+  mint            String
+
+  // Input
+  amount          Decimal     @db.Decimal(30, 9)
+  direction       Direction
+  threshold       Int
+  winChance       Decimal     @db.Decimal(8, 6)
+  multiplier      Decimal     @db.Decimal(12, 6)
+  potentialPayout Decimal     @db.Decimal(30, 9)
+
+  // Provably fair proof
+  serverSeedHash  String
+  clientSeed      String
+  nonce           Int
+  hmac            String?
+
+  // Result
+  roll            Decimal     @default(0) @db.Decimal(6, 2)
+  won             Boolean     @default(false)
+  payout          Decimal     @default(0) @db.Decimal(30, 9)
+
+  // Fees
+  creatorFee      Decimal     @default(0) @db.Decimal(30, 9)
+  treasuryFee     Decimal     @default(0) @db.Decimal(30, 9)
+  affiliateFee    Decimal     @default(0) @db.Decimal(30, 9)
+
+  // Mode & status
+  mode            BetMode
+  status          BetStatus   @default(PENDING)
+  txSignature     String?
+
+  createdAt       DateTime    @default(now())
+
+  @@index([userId, createdAt])
+  @@index([sessionId])
+  @@index([vaultId])
+  @@index([won])
+  @@index([userId, mint, createdAt])
+  @@index([vaultId, status])
+  @@index([mint, createdAt])
+  @@index([createdAt])
+  @@index([status])
+}
+
+// ─── REFERRAL ─────────────────────────────────
+model Referral {
+  id          String    @id @default(cuid())
+  code        String    @unique
+  senderId    String
+  sender      User      @relation("ReferralSender", fields: [senderId], references: [id])
+  receiverId  String?
+  receiver    User?     @relation("ReferralReceiver", fields: [receiverId], references: [id])
+
+  // Tracking
+  clicks      Int       @default(0)
+  conversions Int       @default(0)
+  earnings    Decimal   @default(0) @db.Decimal(30, 9)
+
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  usedAt      DateTime?
+
+  @@index([code])
+  @@index([senderId])
+}
+
+// ─── CHAT ─────────────────────────────────────
+model ChatMessage {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  mint      String   // token room
+  message   String   @db.VarChar(500)
+  createdAt DateTime @default(now())
+
+  @@index([mint, createdAt])
+}
+
+// ─── NOTIFICATION ─────────────────────────────
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id])
+  type      NotificationType
+  title     String
+  body      String
+  read      Boolean          @default(false)
+  metadata  Json?
+  createdAt DateTime         @default(now())
+
+  @@index([userId, read])
+}
+
+// ─── ENUMS ────────────────────────────────────
+enum Direction {
+  UNDER
+  OVER
+}
+
+enum BetMode {
+  MANUAL
+  AUTO
+  FLASH
+}
+
+enum BetStatus {
+  PENDING
+  WIN
+  LOSE
+  REFUNDED
+  PENDING_VRF
+}
+
+enum SessionStatus {
+  ACTIVE
+  PENDING_SETTLEMENT
+  SETTLED
+  ROTATED
+  CANCELLED
+}
+
+enum NotificationType {
+  VAULT_PAUSED
+  VAULT_RESUMED
+  BIG_WIN
+  BIG_LOSS
+  REFERRAL_CONVERSION
+  EMAIL_VERIFY
+}

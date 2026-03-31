@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+venv/
+*/venv/
+*/.venv/
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Testing
+coverage/
+test-results/
+playwright-report/
+*.log
+
+# Environment
+.env*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
+
+# Claude
+.claude/settings.local.json
+
+# Misc
+*.tgz
+.cache/

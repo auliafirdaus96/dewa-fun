@@ -1,0 +1,5 @@
+{
+  "name": "Solana Launchpad UI",
+  "description": "A dark modern UI for a Solana launchpad web app with a token feed and creator dashboard.",
+  "requestFramePermissions": []
+}

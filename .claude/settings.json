@@ -1,0 +1,12 @@
+{
+  "theme": "dark",
+  "ai": {
+    "model": "claude-3-5-sonnet-latest",
+    "rules_path": ".claude/rules",
+    "commands_path": ".claude/commands"
+  },
+  "project": {
+    "name": "dewa-launchpad",
+    "type": "monorepo"
+  }
+}

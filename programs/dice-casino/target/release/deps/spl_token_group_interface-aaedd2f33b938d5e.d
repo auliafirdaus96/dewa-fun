@@ -1,0 +1,10 @@
+D:\GAME\dewa.fun\programs\dice-casino\target\release\deps\spl_token_group_interface-aaedd2f33b938d5e.d: C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\lib.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\error.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\instruction.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\state.rs
+
+D:\GAME\dewa.fun\programs\dice-casino\target\release\deps\spl_token_group_interface-aaedd2f33b938d5e.dll: C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\lib.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\error.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\instruction.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\state.rs
+
+D:\GAME\dewa.fun\programs\dice-casino\target\release\deps\libspl_token_group_interface-aaedd2f33b938d5e.rlib: C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\lib.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\error.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\instruction.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\state.rs
+
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\lib.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\error.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\instruction.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\spl-token-group-interface-0.1.0\src\state.rs:

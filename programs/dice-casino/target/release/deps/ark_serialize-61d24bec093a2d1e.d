@@ -1,0 +1,11 @@
+D:\GAME\dewa.fun\programs\dice-casino\target\release\deps\ark_serialize-61d24bec093a2d1e.d: C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\lib.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\error.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\flags.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\impls.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\../README.md
+
+D:\GAME\dewa.fun\programs\dice-casino\target\release\deps\libark_serialize-61d24bec093a2d1e.rlib: C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\lib.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\error.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\flags.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\impls.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\../README.md
+
+D:\GAME\dewa.fun\programs\dice-casino\target\release\deps\libark_serialize-61d24bec093a2d1e.rmeta: C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\lib.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\error.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\flags.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\impls.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\../README.md
+
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\lib.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\error.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\flags.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\impls.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ark-serialize-0.4.2\src\../README.md:

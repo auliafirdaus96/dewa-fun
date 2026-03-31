@@ -1,0 +1,52 @@
+{
+  "name": "agent-backend",
+  "version": "1.0.0",
+  "description": "Dewa.fun AI Agent Backend (TypeScript + Hono + LangGraph)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "dev:worker": "tsx watch src/worker.ts",
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/index.js",
+    "start:worker": "node dist/worker.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:check": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@dewa/shared-types": "workspace:*",
+    "@hono/node-server": "^1.13.7",
+    "@langchain/anthropic": "^0.3.15",
+    "@langchain/core": "^0.3.40",
+    "@langchain/langgraph": "^0.2.42",
+    "@langchain/openai": "^0.3.16",
+    "@meteora-ag/dlmm": "^1.2.0",
+    "@noble/ed25519": "^3.0.1",
+    "@solana/web3.js": "^1.98.4",
+    "@supabase/supabase-js": "^2.49.1",
+    "dotenv": "^16.4.7",
+    "grammy": "^1.31.0",
+    "hono": "^4.7.5",
+    "ioredis": "^5.6.0",
+    "tweetnacl": "^1.0.3",
+    "twitter-api-v2": "^1.19.0",
+    "winston": "^3.19.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^20.17.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "globals": "^15.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^2.1.9"
+  }
+}

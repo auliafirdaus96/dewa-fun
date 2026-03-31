@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@dewa/shared-types": ["packages/shared-types/src"],
+      "@dewa/solana-utils": ["packages/solana-utils/src"]
+    }
+  },
+  "include": ["scripts/**/*.ts", "packages/**/*.ts"],
+  "exclude": ["node_modules", "**/dist"]
+}

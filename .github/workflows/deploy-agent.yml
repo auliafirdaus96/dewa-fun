@@ -1,0 +1,29 @@
+name: Deploy AI Agent Backend
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'apps/agent-backend/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build and push Docker image
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository }}/dewa-agent:latest
+          docker build -t $IMAGE_NAME ./apps/agent-backend
+          docker push $IMAGE_NAME
+
+      - name: Deploy to Railway/GCP (Placeholder)
+        run: |
+          echo "Triggering deployment for Dewa Agent..."
+          # Example for Railway CLI:
+          # railway up --service agent-backend --image $IMAGE_NAME

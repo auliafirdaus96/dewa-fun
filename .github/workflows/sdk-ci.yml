@@ -1,0 +1,36 @@
+name: SDK CI/CD
+
+on:
+  push:
+    paths:
+      - 'packages/sdk/**'
+  pull_request:
+    paths:
+      - 'packages/sdk/**'
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+          
+      - name: Install dependencies
+        run: npm install
+        working-directory: packages/sdk
+        
+      - name: Build SDK
+        run: npm run build
+        working-directory: packages/sdk
+        
+      # - name: Publish to NPM
+      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #   run: npm publish --access public
+      #   working-directory: packages/sdk
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

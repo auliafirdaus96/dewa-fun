@@ -1,0 +1,56 @@
+{
+  "name": "dewa-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "clean": "turbo clean",
+    "test": "turbo test",
+    "test:frontend": "pnpm --filter @dewa/frontend test",
+    "test:backend": "pnpm --filter agent-backend test",
+    "test:smart-contract": "pnpm --filter dice-casino test"
+  },
+  "devDependencies": {
+    "@coral-xyz/anchor": "^0.32.1",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4",
+    "@types/node": "^20",
+    "chai": "^6.2.2",
+    "ts-node": "^10.9.2",
+    "turbo": "^2.0.0",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
+  "pnpm": {
+    "neverBuiltDependencies": [
+      "@stellar/stellar-sdk",
+      "re2",
+      "tiny-secp256k1"
+    ],
+    "overrides": {
+      "react": "^19.2.1",
+      "react-dom": "^19.2.1",
+      "@types/react": "^19.0.0",
+      "@types/react-dom": "^19.0.0",
+      "ws": "^8.18.0",
+      "bs58": "^6.0.0"
+    },
+    "packageExtensions": {
+      "@solana/wallet-standard-wallet-adapter-base": {
+        "peerDependencies": {
+          "bs58": "^6.0.0"
+        }
+      },
+      "@particle-network/solana-wallet": {
+        "peerDependencies": {
+          "bs58": "^4.0.1"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "fastestsmallesttextencoderdecoder": "^1.0.22"
+  }
+}

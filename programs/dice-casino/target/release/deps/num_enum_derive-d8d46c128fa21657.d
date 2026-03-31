@@ -1,0 +1,9 @@
+D:\GAME\dewa.fun\programs\dice-casino\target\release\deps\num_enum_derive-d8d46c128fa21657.d: C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\lib.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\enum_attributes.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\parsing.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\utils.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\variant_attributes.rs
+
+D:\GAME\dewa.fun\programs\dice-casino\target\release\deps\num_enum_derive-d8d46c128fa21657.dll: C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\lib.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\enum_attributes.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\parsing.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\utils.rs C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\variant_attributes.rs
+
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\lib.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\enum_attributes.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\parsing.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\utils.rs:
+C:\Users\Lenovo\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\num_enum_derive-0.7.6\src\variant_attributes.rs:

@@ -11,7 +11,9 @@
     "test:backend": "pnpm --filter agent-backend test",
     "test:smart-contract": "pnpm --filter dice-casino test",
     "watch-commit": "node scripts/auto-commit-watch.js",
-    "commit-push": "git add .; git commit -m \"Update: $(date '+%Y-%m-%d %H:%M:%S')\"; git push origin main"
+    "commit-push": "git add .; git commit -m \"Update: $(date '+%Y-%m-%d %H:%M:%S')\"; git push origin main",
+    "deploy": "node scripts/deploy-vercel.js",
+    "deploy:prod": "node scripts/deploy-vercel.js --prod"
   },
   "devDependencies": {
     "@coral-xyz/anchor": "^0.32.1",
